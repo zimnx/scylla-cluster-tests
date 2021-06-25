@@ -620,6 +620,12 @@ class KubernetesCluster(metaclass=abc.ABCMeta):
                         'storageClassName': self.params.get('k8s_scylla_disk_class'),
                         'capacity': f"{self.params.get('k8s_scylla_disk_gi')}Gi"
                     },
+                    'agentResources': {
+                        'limits': {
+                            'cpu': '500m',
+                            'memory': '200M'
+                        },
+                    },
                     'resources': {
                         'limits': {
                             'cpu': cpu_limit,
